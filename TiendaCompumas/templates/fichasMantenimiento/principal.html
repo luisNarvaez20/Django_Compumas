@@ -1,0 +1,50 @@
+{% extends "index.html" %}
+{% block contenido %}
+{% load static %}  
+
+<div class="app-title">
+  <div>
+    <h1><i class="fa fa-th-list"></i> Fichas Mantenimiento</h1>
+  </div>
+  <form action="../../form-result.php" method="post" target="_blank">
+    <p>
+      Búsqueda de Fichas: <input type="search" name="busquedamusica" placeholder= &#128270>
+    </p>
+  </form>
+  <div class="col-md-8 col-md-offset-3">
+    <button class="btn btn-primary" type="submit"></i><a href="{% url 'crear_ficha' %}">Registrar</a></button>&nbsp;&nbsp;&nbsp;<button class="btn btn-primary" type="submit"></i>Modificar</button>
+    &nbsp;&nbsp;&nbsp;<button class="btn btn-primary" type="submit"></i>Eliminar</button>
+  </div>
+<div>
+  <h3 class="tile-title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tabla Fichas de Mantenimiento</h3>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="tile">
+      <div class="tile-body">
+        <table class="table table-hover table-bordered" id="sampleTable">
+          <thead>
+            <tr>
+              <th>Numero &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+              <th>Dispositivo &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+              <th>Problema &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+              <th>Fecha &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for ficha in listaFichas %}
+              <tr>
+                <td>{{ficha.numero_ficha}}</td>
+                <td>{{ficha.dispositivo}}</td>
+                <td>{{ficha.problema}}</td>
+				        <td>{{ficha.fecha}}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+    
+{% endblock %}
